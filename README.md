@@ -15,4 +15,5 @@ astro dev start
 ## dags/example_dag.py
 A basic DAG that introduces the concepts of **tasks**, **operators**, **dependencies**, and the **DAG**.
 
-## dags/
+## dags/weather_checker.py
+A more robust DAG that uses **variable**, **connection**, **xcom**, **SimpleHTTPOperator**, and **task context**.
