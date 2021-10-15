@@ -1,0 +1,5 @@
+*__py*
+.git
+.env
+.vscode
+airflow_settings.yaml
