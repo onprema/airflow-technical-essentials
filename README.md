@@ -17,3 +17,8 @@ A basic DAG that introduces the concepts of **tasks**, **operators**, **dependen
 
 ## dags/weather_checker.py
 A more robust DAG that uses **variable**, **connection**, **xcom**, **SimpleHTTPOperator**, and **task context**.
+
+## Accessing the metastore
+```
+docker exec -it $POSTGRES_CONTAINER psql -h postgres -U postgres
+```
