@@ -1,1 +1,1 @@
-FROM quay.io/astronomer/ap-airflow:2.3.2-2-onbuild
+FROM quay.io/astronomer/ap-airflow:2.3.4-onbuild

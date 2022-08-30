@@ -12,6 +12,31 @@ astro dev init
 astro dev start
 ```
 
+## Manual Installation
+```
+mkdir airflow-training && cd airflow-training
+
+python3 -m venv venv
+
+source ./venv/bin/activate
+
+pip install apache-airflow
+
+export AIRFLOW_HOME=$(pwd)
+
+airflow db init
+
+airflow users create \
+    --username admin \
+    --firstname Airflow \
+    --lastname Trainee \
+    --role Admin \
+    --email airflow.trainee@oreilly.com
+
+airflow webserver --port 8080
+
+airflow scheduler
+```
 ## dags/example_dag.py
 A basic DAG that introduces the concepts of **tasks**, **operators**, **dependencies**, and the **DAG**.
 
