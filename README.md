@@ -37,6 +37,20 @@ airflow webserver --port 8080
 
 airflow scheduler
 ```
+
+## docker-compose Installation
+```
+echo -e "AIRFLOW_UID=$(id -u)" >> .env
+docker-compose up airflow-init
+docker-compose up
+
+# user: airflow
+# password: airflow
+
+# cleanup
+docker-compose down --volumes --remove-orphans
+```
+
 ## dags/example_dag.py
 A basic DAG that introduces the concepts of **tasks**, **operators**, **dependencies**, and the **DAG**.
 
