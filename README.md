@@ -4,21 +4,17 @@ This repository contains code and examples used alongside the Apache Airflow Tec
 
 ## Prerequisites
 * [Docker](https://docs.docker.com/get-docker/)
-* [Astro CLI](https://www.astronomer.io/docs/cloud/stable/develop/cli-quickstart)
 
-## Quickstart
-```
-astro dev init
-astro dev start
-```
-
-## Manual Installation
+## Standalone Installation
 ```
 mkdir airflow-training && cd airflow-training
 python3 -m venv airflow-venv
 source ./airflow-venv/bin/activate
-pip install apache-airflow==2.5.0
+python_version=$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)
+constraint_url="https://raw.githubusercontent.com/apache/airflow/constraints-2.5.0/constraints-${python_version}.txt"
+pip install apache-airflow==2.5.0 --constraint "${constraint_url}"
 export AIRFLOW_HOME=$(pwd)
+
 airflow standalone
 ```
 
