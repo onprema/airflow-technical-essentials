@@ -15,27 +15,11 @@ astro dev start
 ## Manual Installation
 ```
 mkdir airflow-training && cd airflow-training
-
-python3 -m venv venv
-
-source ./venv/bin/activate
-
-pip install apache-airflow
-
+python3 -m venv airflow-venv
+source ./airflow-venv/bin/activate
+pip install apache-airflow==2.5.0
 export AIRFLOW_HOME=$(pwd)
-
-airflow db init
-
-airflow users create \
-    --username admin \
-    --firstname Airflow \
-    --lastname Trainee \
-    --role Admin \
-    --email airflow.trainee@oreilly.com
-
-airflow webserver --port 8080
-
-airflow scheduler
+airflow standalone
 ```
 
 ## docker-compose Installation
@@ -62,7 +46,8 @@ A dag that queries the Airflow metastore using the `PostgresOperator`.
 
 ## Accessing the metastore container
 ```
-docker exec -it $POSTGRES_CONTAINER psql -h postgres -U postgres
+docker exec -it $POSTGRES_CONTAINER psql -h postgres -U airflow 
+# password is "airflow"
 ```
 
 ## Notes
