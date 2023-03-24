@@ -5,20 +5,20 @@ This repository contains code and examples used alongside the Apache Airflow Tec
 ## Prerequisites
 * [Docker](https://docs.docker.com/get-docker/)
 
-## Standalone Installation
+## Standalone Installation (Single-node setup)
 ```
 mkdir airflow-training && cd airflow-training
 python3 -m venv airflow-venv
 source ./airflow-venv/bin/activate
-python_version=$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)
-constraint_url="https://raw.githubusercontent.com/apache/airflow/constraints-2.5.0/constraints-${python_version}.txt"
+export airflow_python_version=$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)
+export constraint_url="https://raw.githubusercontent.com/apache/airflow/constraints-2.5.0/constraints-${airflow_python_version}.txt"
 pip install apache-airflow==2.5.0 --constraint "${constraint_url}"
 export AIRFLOW_HOME=$(pwd)
 
 airflow standalone
 ```
 
-## docker-compose Installation
+## docker-compose Installation (Multi-node setup)
 ```
 echo -e "AIRFLOW_UID=$(id -u)" >> .env
 docker-compose up airflow-init
