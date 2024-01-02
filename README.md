@@ -4,6 +4,7 @@ This repository contains code and examples used alongside the Apache Airflow Tec
 
 ## Prerequisites
 * [Docker](https://docs.docker.com/get-docker/)
+* [docker-compose](https://docs.docker.com/compose/install/)
 
 ## Standalone Installation (Single-node setup)
 ```
@@ -24,7 +25,11 @@ airflow standalone
 ## docker-compose Installation (Multi-node setup)
 ```
 echo -e "AIRFLOW_UID=$(id -u)" >> .env
+
+# Initialize the database
 docker-compose up airflow-init
+
+# Run airflow
 docker-compose up
 
 # user: airflow
