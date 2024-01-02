@@ -37,6 +37,7 @@ with DAG(
 
     dag.doc_md = __doc__
 
+    # https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html
     templated_command = textwrap.dedent(
         """
         {% for n in range(5) %}

@@ -11,9 +11,12 @@ mkdir airflow-training && cd airflow-training
 python3 -m venv airflow-venv
 source ./airflow-venv/bin/activate
 export airflow_python_version=$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)
-export constraint_url="https://raw.githubusercontent.com/apache/airflow/constraints-2.5.0/constraints-${airflow_python_version}.txt"
-pip install apache-airflow==2.5.0 --constraint "${constraint_url}"
+export constraint_url="https://raw.githubusercontent.com/apache/airflow/constraints-2.8.0/constraints-${airflow_python_version}.txt"
+pip install apache-airflow==2.8.0 --constraint "${constraint_url}"
 export AIRFLOW_HOME=$(pwd)
+export AIRFLOW__CORE__LOAD_EXAMPLES=False
+mkdir dags
+cp ../dags/example_dag.py dags/
 
 airflow standalone
 ```
