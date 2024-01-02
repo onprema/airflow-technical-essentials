@@ -4,7 +4,7 @@ Things to explore:
     - DAG: https://github.com/apache/airflow/blob/main/airflow/models/dag.py
     - Operators: https://github.com/apache/airflow/tree/main/airflow/operators
     - Provider Operators: https://pypi.org/search/?q=apache-airflow-providers&o=-created&c=Framework+::+Apache+Airflow+::+Provider
-    - Task: https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/tasks.html
+    - Tasks: https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/tasks.html
 """
 import textwrap
 from datetime import datetime, timedelta
