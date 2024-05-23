@@ -33,5 +33,5 @@ with DAG(
     def goodbye():
         print('goodbye!')
 
-    # task_2 and task_3 depends on task_1
+    # curl_task and goodbye depend on hello_task
     hello_task >> [curl_task, goodbye()]
