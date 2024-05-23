@@ -22,21 +22,21 @@ cp ../dags/example_dag.py dags/
 airflow standalone
 ```
 
-## docker-compose Installation (Multi-node setup)
+## docker compose Installation (Multi-node setup)
 ```
 echo -e "AIRFLOW_UID=$(id -u)" >> .env
 
 # Initialize the database
-docker-compose up airflow-init
+docker compose up airflow-init
 
 # Run airflow
-docker-compose up
+docker compose up
 
 # user: airflow
 # password: airflow
 
 # cleanup
-docker-compose down --volumes --remove-orphans
+docker compose down --volumes --remove-orphans
 ```
 
 ## dags/example_dag.py
