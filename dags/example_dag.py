@@ -48,5 +48,5 @@ with DAG(
     )
     task_3 = BashOperator(task_id="templated_task", bash_command=templated_command)
 
-    # task_2 depends on task_1
+    # task_2 and task_3 depends on task_1
     task_1 >> [task_2, task_3]
