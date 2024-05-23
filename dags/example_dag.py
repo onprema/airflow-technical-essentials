@@ -8,7 +8,8 @@ Things to explore:
 """
 import textwrap
 from datetime import datetime, timedelta
-from airflow.models.dag import DAG
+from airflow import DAG
+from airflow.decorators import task
 from airflow.operators.bash import BashOperator
 
 
@@ -25,28 +26,12 @@ with DAG(
     schedule_interval="@hourly",
     catchup=False,
 ) as dag:
-    task_1 = BashOperator(task_id="hello_task", bash_command='echo "Hello"')
-    task_2 = BashOperator(task_id="curl_task", bash_command="curl http://example.com")
-    task_2.doc_md = textwrap.dedent(
-        """
-        ## Task 2 documentation
-        This task uses `curl` to **send a GET request** to _example.com_
-        ![img](https://www.booleanworld.com/wp-content/uploads/2018/12/curl-cover-picture.png)
-        """
-    )
+    hello_task = BashOperator(task_id="hello_task", bash_command='echo "Hello"')
+    curl_task = BashOperator(task_id="curl_task", bash_command="curl http://example.com")
 
-    dag.doc_md = __doc__
-
-    # https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html
-    templated_command = textwrap.dedent(
-        """
-        {% for n in range(5) %}
-            echo "{{ ds }}"
-            echo "{{ macros.ds_add(ds, 7) }}"
-        {% endfor %}
-        """
-    )
-    task_3 = BashOperator(task_id="templated_task", bash_command=templated_command)
+    @task()
+    def goodbye():
+        print('goodbye!')
 
     # task_2 and task_3 depends on task_1
-    task_1 >> [task_2, task_3]
+    hello_task >> [curl_task, goodbye()]
