@@ -57,3 +57,6 @@ docker exec -it $POSTGRES_CONTAINER psql -h postgres -U airflow
 ## Notes
 - The **logical date**, formerly known as **execution date**, is the start of the _data interval_, not when the DAG is actually executed.
 - Environment variables override `airflow.cfg` (See `.env` for examples)
+
+## Other examples
+- [PythonOperator (with virtual env)](https://airflow.apache.org/docs/apache-airflow/stable/howto/operator/python.html)
