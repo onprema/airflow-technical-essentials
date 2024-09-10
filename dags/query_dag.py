@@ -22,7 +22,7 @@ dag = DAG(
 )
 
 def get_query_results():
-    sql = 'select * from variable'
+    sql = 'select * from dag'
     pg_hook = PostgresHook(postgres_conn_id='airflow_conn')
     conn = pg_hook.get_conn()
     cursor = conn.cursor()
